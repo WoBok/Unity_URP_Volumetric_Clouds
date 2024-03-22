@@ -15,7 +15,7 @@ MonoBehaviour:
   seed: 2
   numDivisionsA: 88
   numDivisionsB: 18
-  numDivisionsC: 2
+  numDivisionsC: 55
   persistence: 1.5
   tile: 1
   invert: 1

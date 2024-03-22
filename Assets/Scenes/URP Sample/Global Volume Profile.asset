@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Global Volume Profile
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 5867399068199243798}
+--- !u!114 &5867399068199243798
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b35709419114bd40a07f938bc78ec85, type: 3}
+  m_Name: VolumetricCloudsVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  numStepsLight:
+    m_OverrideState: 0
+    m_Value: 20
+  rayOffsetStrength:
+    m_OverrideState: 0
+    m_Value: 10
+  blueNoise:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  cloudScale:
+    m_OverrideState: 0
+    m_Value: 1
+  densityMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  densityOffset:
+    m_OverrideState: 0
+    m_Value: -1
+  shapeNoiseWeights:
+    m_OverrideState: 0
+    m_Value: {x: 6, y: 0.5, z: 1, w: 2}
+  shapeOffset:
+    m_OverrideState: 0
+    m_Value: {x: 2, y: 0, z: 0}
+  heightOffset:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
+  detailNoiseScale:
+    m_OverrideState: 0
+    m_Value: 2
+  detailNoiseWeight:
+    m_OverrideState: 0
+    m_Value: 5
+  detailNoiseWeights:
+    m_OverrideState: 0
+    m_Value: {x: 15, y: 0.5, z: 0.5}
+  detailOffset:
+    m_OverrideState: 0
+    m_Value: {x: 5, y: 0, z: 0}
+  lightAbsorptionThroughCloud:
+    m_OverrideState: 0
+    m_Value: 1
+  lightAbsorptionTowardSun:
+    m_OverrideState: 0
+    m_Value: 2
+  darknessThreshold:
+    m_OverrideState: 0
+    m_Value: 0.2
+  forwardScattering:
+    m_OverrideState: 0
+    m_Value: 0.8
+  backScattering:
+    m_OverrideState: 0
+    m_Value: 0.3
+  baseBrightness:
+    m_OverrideState: 0
+    m_Value: 0.8
+  phaseFactor:
+    m_OverrideState: 0
+    m_Value: 0.15
+  timeScale:
+    m_OverrideState: 0
+    m_Value: 1
+  baseSpeed:
+    m_OverrideState: 0
+    m_Value: 1
+  detailSpeed:
+    m_OverrideState: 0
+    m_Value: 1
+  colA:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  colB:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
