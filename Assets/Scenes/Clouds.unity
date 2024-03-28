@@ -291,6 +291,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &309279688
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ShapeNoise
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 128
+  m_Height: 128
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 0
+  m_ColorFormat: 24
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_Dimension: 3
+  m_VolumeDepth: 128
+  m_ShadowSamplingMode: 2
 --- !u!84 &738324534
 RenderTexture:
   m_ObjectHideFlags: 0
@@ -329,7 +367,7 @@ RenderTexture:
   m_Dimension: 3
   m_VolumeDepth: 64
   m_ShadowSamplingMode: 2
---- !u!84 &1092941000
+--- !u!84 &1780535994
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -351,7 +389,7 @@ RenderTexture:
   m_ColorFormat: 24
   m_MipMap: 0
   m_GenerateMips: 1
-  m_SRGB: 0
+  m_SRGB: 1
   m_UseDynamicScale: 0
   m_BindMS: 0
   m_EnableCompatibleFormat: 1
@@ -366,44 +404,6 @@ RenderTexture:
     m_WrapW: 0
   m_Dimension: 3
   m_VolumeDepth: 64
-  m_ShadowSamplingMode: 2
---- !u!84 &1105706115
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ShapeNoise
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 128
-  m_Height: 128
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 0
-  m_ColorFormat: 24
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 0
-    m_WrapV: 0
-    m_WrapW: 0
-  m_Dimension: 3
-  m_VolumeDepth: 128
   m_ShadowSamplingMode: 2
 --- !u!84 &1956478745
 RenderTexture:
@@ -597,12 +597,17 @@ PrefabInstance:
         type: 3}
       propertyPath: shapeTexture
       value: 
-      objectReference: {fileID: 1105706115}
+      objectReference: {fileID: 1956478745}
     - target: {fileID: 4076204960112293026, guid: 0f3ec414553fb6244b410162fff8713a,
         type: 3}
       propertyPath: detailTexture
       value: 
-      objectReference: {fileID: 1092941000}
+      objectReference: {fileID: 738324534}
+    - target: {fileID: 4076204960112293026, guid: 0f3ec414553fb6244b410162fff8713a,
+        type: 3}
+      propertyPath: viewerEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8418946114020513593, guid: 0f3ec414553fb6244b410162fff8713a,
         type: 3}
       propertyPath: m_LocalPosition.x
