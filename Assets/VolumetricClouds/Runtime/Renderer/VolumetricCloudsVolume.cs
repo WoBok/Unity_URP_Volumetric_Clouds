@@ -54,7 +54,6 @@ namespace VolumetricClouds.Renderer
         public Vector3Parameter position = new(new Vector3(1000, 300, 100));
         public Vector3Parameter scale = new(Vector3.one * 2000);
 
-        public Vector3Parameter cloudTestParams = new(Vector3.zero);
         public bool IsActive() => blueNoise != null;
         public bool IsTileCompatible() => false;
     }

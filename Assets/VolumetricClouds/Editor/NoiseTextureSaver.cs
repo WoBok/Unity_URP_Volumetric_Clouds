@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace VolumetricClouds.Editor
 {
-    public class NoiseSaver
+    public class NoiseTextureSaver
     {
         public ComputeShader slicer;
         const int threadGroupSize = 32;

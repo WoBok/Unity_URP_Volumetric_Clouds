@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace VolumetricClouds.Editor
 {
-    public class NoiseGenerator
+    public class NoiseTextureGenerator
     {
         public enum CloudNoiseType { Shape, Detail }
         public enum TextureChannel { R, G, B, A }
 
-        static NoiseGenerator s_Instance;
-        public static NoiseGenerator Instance { get { if (s_Instance == null) s_Instance = new NoiseGenerator(); return s_Instance; } set => s_Instance = value; }
+        static NoiseTextureGenerator s_Instance;
+        public static NoiseTextureGenerator Instance { get { if (s_Instance == null) s_Instance = new NoiseTextureGenerator(); return s_Instance; } set => s_Instance = value; }
 
         public const string DETAILNOISENAME = "DetailNoise";
         public const string SHAPENOISENAME = "ShapeNoise";
