@@ -1,7 +1,9 @@
 {
     "name": "VolumetricClouds.Editor",
     "rootNamespace": "VolumetricClouds.Editor",
-    "references": [],
+    "references": [
+        "GUID:bfe99bb530886494c992574e12ed0ca2"
+    ],
     "includePlatforms": [
         "Editor"
     ],

@@ -12,20 +12,10 @@ namespace VolumetricClouds.Renderer
         RTHandle m_CameraColorTargetHandle;
         int m_TempTarget = Shader.PropertyToID("TempTarget");
 
-        RenderTexture shapeTexture;
-        RenderTexture detailTexture;
-
-        public int shapeResolution = 128;
-        public int detailResolution = 64;
-        public const string DETAILNOISENAME = "DetailNoise";
-        public const string SHAPENOISENAME = "ShapeNoise";
         public VolumetricCloudsRenderPass()
         {
             m_CloudsMaterial = new Material(Shader.Find("Hidden/Clouds"));
             m_Volume = VolumeManager.instance.stack.GetComponent<VolumetricCloudsVolume>();
-
-            CreateTexture(ref shapeTexture, shapeResolution, SHAPENOISENAME);
-            CreateTexture(ref detailTexture, detailResolution, DETAILNOISENAME);
         }
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
@@ -53,8 +43,8 @@ namespace VolumetricClouds.Renderer
         {
             if (!m_CloudsMaterial) return;
 
-            m_CloudsMaterial.SetTexture("NoiseTex", shapeTexture);
-            m_CloudsMaterial.SetTexture("DetailNoiseTex", detailTexture);
+            m_CloudsMaterial.SetTexture("NoiseTex", NoiseTexture.shapeTexture);
+            m_CloudsMaterial.SetTexture("DetailNoiseTex", NoiseTexture.detailTexture);
             m_CloudsMaterial.SetTexture("BlueNoise", m_Volume.blueNoise.value);
             m_CloudsMaterial.SetFloat("scale", m_Volume.cloudScale.value);
             m_CloudsMaterial.SetFloat("densityMultiplier", m_Volume.densityMultiplier.value);
@@ -74,30 +64,9 @@ namespace VolumetricClouds.Renderer
             m_CloudsMaterial.SetVector("boundsMax", m_Volume.position.value + m_Volume.scale.value / 2);
             m_CloudsMaterial.SetInt("numStepsLight", m_Volume.numStepsLight.value);
             m_CloudsMaterial.SetVector("mapSize", new Vector4(Mathf.CeilToInt(m_Volume.scale.value.x), Mathf.CeilToInt(m_Volume.scale.value.y), Mathf.CeilToInt(m_Volume.scale.value.z), 0));
-            m_CloudsMaterial.SetFloat("timeScale", (Application.isPlaying) ? m_Volume.timeScale.value : 0);
+            m_CloudsMaterial.SetFloat("timeScale", m_Volume.autoPlay.value ? m_Volume.timeScale.value : 0);
             m_CloudsMaterial.SetFloat("baseSpeed", m_Volume.baseSpeed.value);
             m_CloudsMaterial.SetFloat("detailSpeed", m_Volume.detailSpeed.value);
-        }
-        public void UpdateMaterialNoise()
-        {
-
-        }
-        void CreateTexture(ref RenderTexture texture, int resolution, string name)
-        {
-            var format = UnityEngine.Experimental.Rendering.GraphicsFormat.R16G16B16A16_UNorm;
-            if (texture == null || !texture.IsCreated() || texture.width != resolution || texture.height != resolution || texture.volumeDepth != resolution || texture.graphicsFormat != format)
-            {
-                texture = new RenderTexture(resolution, resolution, 0);
-                texture.wrapMode = TextureWrapMode.Repeat;
-                texture.filterMode = FilterMode.Bilinear;
-                texture.graphicsFormat = format;
-                texture.volumeDepth = resolution;
-                texture.enableRandomWrite = true;
-                texture.dimension = TextureDimension.Tex3D;
-                texture.name = name;
-                texture.Create();
-                NoiseTextureLoader.Load(name, texture);
-            }
         }
     }
 }

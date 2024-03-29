@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: VolumetricCloudsRendererFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  slicer: {fileID: 7200000, guid: 21b2f0659c6bd434f81825e14415969a, type: 3}
   copy: {fileID: 7200000, guid: 7abd06564e4244f60857856659a3809f, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:

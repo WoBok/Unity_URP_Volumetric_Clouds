@@ -1,31 +1,18 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using VolumetricClouds.Renderer;
 
 namespace VolumetricClouds.Editor
 {
-    public class NoiseTextureGenerator
+    public class NoiseTextureGenerator : MonoBehaviour
     {
+        const int COMPUTETHREADGROUPSIZE = 8;
         public enum CloudNoiseType { Shape, Detail }
         public enum TextureChannel { R, G, B, A }
 
-        static NoiseTextureGenerator s_Instance;
-        public static NoiseTextureGenerator Instance { get { if (s_Instance == null) s_Instance = new NoiseTextureGenerator(); return s_Instance; } set => s_Instance = value; }
-
-        public const string DETAILNOISENAME = "DetailNoise";
-        public const string SHAPENOISENAME = "ShapeNoise";
-        const int COMPUTETHREADGROUPSIZE = 8;
-
-        public Action<RenderTexture[]> UpdateNoise;
-
         public CloudNoiseType activeTextureType;
         public TextureChannel activeChannel;
-
-        public int shapeResolution = 128;
-        public int detailResolution = 32;
-
-        public RenderTexture shapeTexture;
-        public RenderTexture detailTexture;
 
         public WorleyNoiseSettings[] shapeSettings;
         public WorleyNoiseSettings[] detailSettings;
@@ -33,7 +20,7 @@ namespace VolumetricClouds.Editor
         public ComputeShader copy;
         List<ComputeBuffer> m_BuffersToRelease = new List<ComputeBuffer>();
 
-        public RenderTexture ActiveTexture => activeTextureType == CloudNoiseType.Shape ? shapeTexture : detailTexture;
+        public RenderTexture ActiveTexture => activeTextureType == CloudNoiseType.Shape ? NoiseTexture.shapeTexture : NoiseTexture.detailTexture;
         public WorleyNoiseSettings ActiveSettings
         {
             get
@@ -61,23 +48,21 @@ namespace VolumetricClouds.Editor
         {
             CreateTexture();
             UpdateCompute();
-            UpdateNoise?.Invoke(new RenderTexture[] { shapeTexture, detailTexture });
         }
         public void Update()
         {
             UpdateCompute();
-            UpdateNoise?.Invoke(new RenderTexture[] { shapeTexture, detailTexture });
         }
         void CreateTexture()
         {
             ValidateParamaters();
-            CreateTexture(ref shapeTexture, shapeResolution, SHAPENOISENAME);
-            CreateTexture(ref detailTexture, detailResolution, DETAILNOISENAME);
+            CreateTexture(ref NoiseTexture.shapeTexture, NoiseTextureInfo.Info.shapeResolution, NoiseTextureInfo.Info.shapeNoiseName);
+            CreateTexture(ref NoiseTexture.detailTexture, NoiseTextureInfo.Info.detailResolution, NoiseTextureInfo.Info.detailNoiseName);
         }
         void ValidateParamaters()
         {
-            detailResolution = Mathf.Max(1, detailResolution);
-            shapeResolution = Mathf.Max(1, shapeResolution);
+            NoiseTextureInfo.Info.detailResolution = Mathf.Max(1, NoiseTextureInfo.Info.detailResolution);
+            NoiseTextureInfo.Info.shapeResolution = Mathf.Max(1, NoiseTextureInfo.Info.shapeResolution);
         }
         public void CreateTexture(ref RenderTexture texture, int resolution, string name)
         {

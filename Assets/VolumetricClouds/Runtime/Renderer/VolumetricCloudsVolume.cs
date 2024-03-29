@@ -46,6 +46,7 @@ namespace VolumetricClouds.Renderer
         public ClampedFloatParameter phaseFactor = new(0.15f, 0, 1);
 
         [Header("Animation")]
+        public BoolParameter autoPlay = new(true);
         public ClampedFloatParameter timeScale = new(1, 0, 100);
         public ClampedFloatParameter baseSpeed = new(1, 0, 100);
         public ClampedFloatParameter detailSpeed = new(1, 0, 100);
